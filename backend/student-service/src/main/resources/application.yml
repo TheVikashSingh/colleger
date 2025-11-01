@@ -3,11 +3,11 @@ server:
 
 spring:
   application:
-    name: accounts-service
+    name: student-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/colleger-studentdb
-    username: jordan
+    url: jdbc:postgresql://localhost:5432/colleger_studentdb
+    username: postgres
     password: 42069
     driver-class-name: org.postgresql.Driver
 
