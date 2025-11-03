@@ -1,12 +1,12 @@
 server:
-port: 8081
+  port: 8083
 
 spring:
   application:
-    name: accounts-service
+    name: charity-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/colleger-accountsdb
+    url: jdbc:postgresql://localhost:5432/colleger-charitydb
     username: jordan
     password: 42069
     driver-class-name: org.postgresql.Driver
