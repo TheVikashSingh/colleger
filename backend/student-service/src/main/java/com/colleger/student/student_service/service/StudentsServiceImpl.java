@@ -25,7 +25,7 @@ public class StudentsServiceImpl implements IStudentsService{
             StudentsDTO studentsDTO = new StudentsDTO();
             studentsDTO.setId(studentsEntity1.getId());
             studentsDTO.setName(studentsEntity1.getName());
-            studentsDTO.setSex(studentsEntity1.getSex());
+            studentsDTO.setGender(studentsEntity1.getGender());
             studentsDTO.setClassofstudent(studentsEntity1.getClassofstudent());
 
             studentsDTOList.add(studentsDTO);
@@ -38,7 +38,7 @@ public class StudentsServiceImpl implements IStudentsService{
     public String addStudent(StudentsDTO studentsDTO) {
         StudentsEntity studentsEntity = new StudentsEntity();
         studentsEntity.setName(studentsDTO.getName());
-        studentsEntity.setSex(studentsDTO.getSex());
+        studentsEntity.setGender(studentsDTO.getGender());
         studentsEntity.setClassofstudent(studentsDTO.getClassofstudent());
 
         iStudentsRepository.save(studentsEntity);
@@ -49,7 +49,7 @@ public class StudentsServiceImpl implements IStudentsService{
     public StudentsDTO updateStudent(Long id, StudentsDTO studentsDTO) {
         StudentsEntity studentsEntity = iStudentsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Student does not exist."));
         studentsEntity.setName(studentsDTO.getName());
-        studentsEntity.setSex(studentsDTO.getSex());
+        studentsEntity.setGender(studentsDTO.getGender());
         studentsEntity.setClassofstudent(studentsDTO.getClassofstudent());
         iStudentsRepository.save(studentsEntity);
         return studentsDTO;

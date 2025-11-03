@@ -5,10 +5,13 @@ spring:
   application:
     name: student-service
 
+  profiles:
+    active: local
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/colleger_studentdb
-    username: postgres
-    password: 42069
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/colleger_studentdb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -18,3 +21,27 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true # Optional: to display SQL queries in the console
+---
+#Local Profile
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/colleger_studentdb
+    username: postgres
+    password: 42069
+    driver-class-name: org.postgresql.Driver
+---
+#Docker Profile
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/colleger_studentdb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver

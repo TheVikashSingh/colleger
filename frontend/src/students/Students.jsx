@@ -6,15 +6,15 @@ import React, { useEffect, useState } from 'react'
 
 
 const Students = () => {
+    const studentApiURL = import.meta.env.VITE_STUDENT_API_URL;
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
     const [classOfStudent, setClassOfStudent] = useState("");
-    const [studentDetails, setStudentDetails] = useState("");
 
     const queryClient = useQueryClient();
 
     const getStudentDetails = async () => {
-        const response = await axios.get("http://localhost:8084/api/students/");
+        const response = await axios.get(studentApiURL);
         return response.data;
     }
 
@@ -69,7 +69,7 @@ const Students = () => {
         const newStudent = 
             {
                 "name": name,
-                "sex": gender,
+                "gender": gender,
                 "classofstudent": classOfStudent
             }
         mutate(newStudent);
@@ -115,7 +115,7 @@ const Students = () => {
                 <tr key={s.id}>
                 <td>{s.id}</td>
                 <td>{s.name}</td>
-                <td>{s.sex}</td>
+                <td>{s.gender}</td>
                 <td>{s.classofstudent}</td>
                 <td><button onClick={() => deleteAStudent(s.id)}>DEL</button></td>
                 </tr>

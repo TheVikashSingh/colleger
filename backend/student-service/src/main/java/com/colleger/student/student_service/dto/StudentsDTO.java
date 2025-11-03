@@ -8,7 +8,7 @@ public class StudentsDTO {
 
     private Long id;
     private String name;
-    private String sex;
+    private String gender;
     private String classofstudent;
 
 

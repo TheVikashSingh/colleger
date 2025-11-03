@@ -18,7 +18,7 @@ public class StudentsEntity {
     private String name;
 
     @NotEmpty
-    private String sex;
+    private String gender;
 
     @Column(name = "class_of_student")
     private String classofstudent;
