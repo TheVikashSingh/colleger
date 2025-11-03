@@ -1,4 +1,4 @@
-package com.colleger.student.student_service.service;
+package com.colleger.caretaker.caretaker_service.service;
 
 import com.colleger.student.student_service.dto.StudentsDTO;
 import com.colleger.student.student_service.model.StudentsEntity;
@@ -47,9 +47,12 @@ public class StudentsServiceImpl implements IStudentsService{
 
     @Override
     public StudentsDTO updateStudent(Long id, StudentsDTO studentsDTO) {
+        if(!iStudentsRepository.existsById(id)){
+            throw new RuntimeException("Id does not exist");
+        }
         StudentsEntity studentsEntity = iStudentsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Student does not exist."));
         studentsEntity.setName(studentsDTO.getName());
-        studentsEntity.setSex(studentsDTO.getSex());
+        studentsEntity.setSex(studentsDTO.getName());
         studentsEntity.setClassofstudent(studentsDTO.getClassofstudent());
         iStudentsRepository.save(studentsEntity);
         return studentsDTO;
@@ -58,6 +61,9 @@ public class StudentsServiceImpl implements IStudentsService{
     @Override
     public String deleteStudent(Long id) {
         StudentsEntity studentsEntity;
+        if(!iStudentsRepository.existsById(id)){
+            throw new RuntimeException("Invalid id");
+        }
         studentsEntity = iStudentsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Invalid ID"));
         iStudentsRepository.deleteById(id);
         return studentsEntity.getName() + " is deleted.";

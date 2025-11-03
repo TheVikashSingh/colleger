@@ -1,7 +1,6 @@
-package com.colleger.student.student_service.service;
+package com.colleger.caretaker.caretaker_service.service;
 
 import com.colleger.student.student_service.dto.StudentsDTO;
-import com.colleger.student.student_service.model.StudentsEntity;
 
 import java.util.List;
 

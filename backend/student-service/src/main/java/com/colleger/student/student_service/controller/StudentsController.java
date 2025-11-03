@@ -25,4 +25,14 @@ public class StudentsController {
         return studentsService.addStudent(studentsDTO);
     }
 
+    @PutMapping("{id}")
+    public StudentsDTO updateStudent(@PathVariable Long id, @RequestBody StudentsDTO studentsDTO){
+        return studentsService.updateStudent(id, studentsDTO);
+    }
+
+    @DeleteMapping("{id}")
+    public String deleteStudent(@PathVariable Long id){
+        return studentsService.deleteStudent(id);
+    }
+
 }

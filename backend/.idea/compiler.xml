@@ -2,16 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for student-service" enabled="true">
+      <profile name="Annotation profile for caretaker-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="student-service" />
         <module name="accounts-service" />
+        <module name="student-service" />
+        <module name="charity-service" />
         <module name="teacher-service" />
         <module name="caretaker-service" />
       </profile>
@@ -21,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="accounts-service" options="-parameters" />
       <module name="caretaker-service" options="-parameters" />
+      <module name="charity-service" options="-parameters" />
       <module name="student-service" options="-parameters" />
       <module name="teacher-service" options="-parameters" />
     </option>
