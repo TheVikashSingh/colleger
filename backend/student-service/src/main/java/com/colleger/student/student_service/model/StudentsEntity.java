@@ -4,14 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @Entity
-@Table(name = "studentsdb")
+@Table(name = "studentstable")
 @Data
 public class StudentsEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private final Long id = (new IDGenerator()).getId();
 
     @NotEmpty
     private String name;
