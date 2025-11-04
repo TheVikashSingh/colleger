@@ -37,6 +37,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.CaretakerServiceApplication.executor": "Run",
     "Application.CharityServiceApplication.executor": "Run",
     "Application.StudentServiceApplication.executor": "Run",
     "Docker.student-service/Dockerfile BUILD.executor": "Run",
@@ -46,16 +47,33 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/FULL STACK WEBSITES/project5colleger/colleger/backend/accounts-service",
+    "last_opened_file_path": "E:/FULL STACK WEBSITES/project5colleger/colleger/backend/teacher-service",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\FULL STACK WEBSITES\project5colleger\colleger\backend\teacher-service" />
+      <recent name="E:\FULL STACK WEBSITES\project5colleger\colleger\backend\charity-service" />
+      <recent name="E:\FULL STACK WEBSITES\project5colleger\colleger\backend\caretaker-service" />
+      <recent name="E:\FULL STACK WEBSITES\project5colleger\colleger\backend\accounts-service" />
       <recent name="E:\FULL STACK WEBSITES\project5colleger\colleger\backend\charity-service\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.student-service/Dockerfile BUILD">
+  <component name="RunManager" selected="Application.CaretakerServiceApplication">
+    <configuration name="CaretakerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.colleger.caretaker.caretaker_service.CaretakerServiceApplication" />
+      <module name="caretaker-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.colleger.caretaker.caretaker_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CharityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.colleger.charity.CharityServiceApplication" />
       <module name="charity-service" />
@@ -101,6 +119,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CaretakerServiceApplication" />
         <item itemvalue="Docker.student-service/Dockerfile BUILD" />
         <item itemvalue="Application.StudentServiceApplication" />
         <item itemvalue="Application.CharityServiceApplication" />
