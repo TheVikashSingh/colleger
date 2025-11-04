@@ -1,0 +1,194 @@
+version: "3.9"
+
+services:
+
+######################################################### - 1 - Accounts Service
+ colleger_accountsdb:
+  image: postgres:18
+  container_name: colleger_accountsdb
+  restart: always
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: 12345
+   POSTGRES_DB: colleger_accountsdb
+  volumes:
+   - colleger_accountsdb:/var/lib/postgresql
+  ports:
+   - "5433:5432"
+  networks:
+   - colleger-network 
+
+ colleger_accounts_microservice:
+  build: ./backend/accounts-service
+  container_name: colleger_accounts_microservice
+  environment: 
+   SPRING_DATASOURCE_URL: jdbc:postgresql://colleger_accountsdb:5432/colleger_accountsdb
+   SPRING_DATASOURCE_USERNAME: postgres
+   SPRING_DATASOURCE_PASSWORD: 12345
+   SPRING_JPA_SHOW_SQL: "true"
+   SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  depends_on:
+   - colleger_accountsdb
+  ports:
+   - "8081:8081"
+  networks:
+   - colleger-network
+
+########################################################## - 2 - Caretaker Service
+
+ colleger_caretakerdb:
+  image: postgres:18
+  container_name: colleger_caretakerdb
+  restart: always
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: 12345
+   POSTGRES_DB: colleger_caretakerdb
+  volumes:
+   - colleger_caretakerdb:/var/lib/postgresql
+  ports:
+   - "5434:5432"
+  networks:
+   - colleger-network 
+
+ colleger_caretaker_microservice:
+  build: ./backend/caretaker-service
+  container_name: colleger_caretaker_microservice
+  environment: 
+   SPRING_DATASOURCE_URL: jdbc:postgresql://colleger_caretakerdb:5432/colleger_caretakerdb
+   SPRING_DATASOURCE_USERNAME: postgres
+   SPRING_DATASOURCE_PASSWORD: 12345
+   SPRING_JPA_SHOW_SQL: "true"
+   SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  depends_on:
+   - colleger_caretakerdb
+  ports:
+   - "8082:8082"
+  networks:
+   - colleger-network
+
+########################################################## - 3 - Charity Service
+
+ colleger_charitydb:
+  image: postgres:18
+  container_name: colleger_charitydb
+  restart: always
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: 12345
+   POSTGRES_DB: colleger_charitydb
+  volumes:
+   - colleger_charitydb:/var/lib/postgresql
+  ports:
+   - "5435:5432"
+  networks:
+   - colleger-network 
+
+ colleger_charity_microservice:
+  build: ./backend/charity-service
+  container_name: colleger_charity_microservice
+  environment: 
+   SPRING_DATASOURCE_URL: jdbc:postgresql://colleger_charitydb:5432/colleger_charitydb
+   SPRING_DATASOURCE_USERNAME: postgres
+   SPRING_DATASOURCE_PASSWORD: 12345
+   SPRING_JPA_SHOW_SQL: "true"
+   SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  depends_on:
+   - colleger_charitydb
+  ports:
+   - "8083:8083"
+  networks:
+   - colleger-network
+
+########################################################## - 4 - Student Service
+
+ colleger_studentdb:
+  image: postgres:18
+  container_name: colleger_studentdb
+  restart: always
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: 12345
+   POSTGRES_DB: colleger_studentdb
+  volumes:
+   - colleger_studentdb:/var/lib/postgresql
+  ports:
+   - "5436:5432"
+  networks:
+   - colleger-network 
+
+ colleger_student_microservice:
+  build: ./backend/student-service
+  container_name: colleger_student_microservice
+  environment: 
+   SPRING_DATASOURCE_URL: jdbc:postgresql://colleger_studentdb:5432/colleger_studentdb
+   SPRING_DATASOURCE_USERNAME: postgres
+   SPRING_DATASOURCE_PASSWORD: 12345
+   SPRING_JPA_SHOW_SQL: "true"
+   SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  depends_on:
+   - colleger_studentdb
+  ports:
+   - "8084:8084"
+  networks:
+   - colleger-network
+
+########################################################## - 5 - Teacher Service
+ colleger_teacherdb:
+  image: postgres:18
+  container_name: colleger_teacherdb
+  restart: always
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: 12345
+   POSTGRES_DB: colleger_teacherdb
+  volumes:
+   - colleger_teacherdb:/var/lib/postgresql
+  ports:
+   - "5437:5432"
+  networks:
+   - colleger-network 
+
+ colleger_teacher_microservice:
+  build: ./backend/teacher-service
+  container_name: colleger_teacher_microservice
+  environment: 
+   SPRING_DATASOURCE_URL: jdbc:postgresql://colleger_teacherdb:5432/colleger_teacherdb
+   SPRING_DATASOURCE_USERNAME: postgres
+   SPRING_DATASOURCE_PASSWORD: 12345
+   SPRING_JPA_SHOW_SQL: "true"
+   SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  depends_on:
+   - colleger_teacherdb
+  ports:
+   - "8085:8085"
+  networks:
+   - colleger-network
+
+#########################################################
+  
+
+ frontend:
+  build: ./frontend
+  container_name: colleger_frontend
+  ports:
+   - "80:80"
+  depends_on:
+   - colleger_accounts_microservice
+   - colleger_caretaker_microservice
+   - colleger_charity_microservice
+   - colleger_student_microservice
+   - colleger_teacher_microservice
+
+networks:
+ colleger-network:
+  driver: bridge 
+
+volumes:
+ colleger_accountsdb:   
+ colleger_caretakerdb:
+ colleger_charitydb:
+ colleger_studentdb:
+ colleger_teacherdb:
+ 
+    

@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: accounts-service
+    name: colleger_accounts_microservice
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/colleger-accountsdb
+    url: jdbc:postgresql://localhost:5432/colleger_accountsdb
     username: jordan
     password: 42069
     driver-class-name: org.postgresql.Driver

@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: charity-service
+    name: colleger_charity_microservice
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/colleger-charitydb
+    url: jdbc:postgresql://localhost:5432/colleger_charitydb
     username: jordan
     password: 42069
     driver-class-name: org.postgresql.Driver

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: teacher-service
+    name: colleger_teacher_microservice
 
   datasource:
     url: jdbc:postgresql://localhost:5432/colleger-teacherdb

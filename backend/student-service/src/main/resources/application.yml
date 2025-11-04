@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: student-service
+    name: colleger_student_microservice
 
   profiles:
     active: local
