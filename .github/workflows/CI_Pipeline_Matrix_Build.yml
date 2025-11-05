@@ -1,7 +1,7 @@
-name: CI Pipeline (only one backend microservice)
-on: workflow_dispatch
+name: CI Pipeline Matrix Build
+on: [workflow_dispatch,push]
 jobs:
-  deploying_frontend:
+  build_frontend:
    runs-on: ubuntu-latest
    needs: deploying_backend_accounts_microservice
    steps:
@@ -17,29 +17,31 @@ jobs:
         npm ci
         npm run build
      - name: Build frontend Docker image
-       run: docker build -t thevikashpratapsingh/colleger_frontend:${{ github.sha }} ./frontend
+       run: docker build -t thevikashpratapsingh/colleger_frontend:latest ./frontend
      - name: Login to the Docker Hub
        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
      - name: Push the frontend image
-       run: docker push thevikashpratapsingh/colleger_frontend:${{ github.sha }}  
+       run: docker push thevikashpratapsingh/colleger_frontend:latest 
 
-  deploying_backend_accounts_microservice:
+  build_backend_microservices:
    runs-on: ubuntu-latest
+   strategy:
+    matrix:
+     service: [accounts-service, caretaker-service, charity-service, student-service, teacher-service]
    steps:
-     - name: checkout code
+     - name: Checking out the code
        uses: actions/checkout@v5
-     - name: Set up Java 21
+     - name: Setting up the jdk 
        uses: actions/setup-java@v5
        with:
         distribution: 'temurin' 
         java-version: '21'
-     - name: Building Accounts Microservice Jar
-       working-directory: ./backend/accounts-service
+     - name: Build ${{ matrix.service }} JAR
+       working-directory: ./backend/${{ matrix.service }} 
        run: mvn clean package -DskipTests
-     - name: Build Accounts Microservice Docker image
-       run: docker build -t thevikashpratapsingh/colleger_accounts_service:${{ github.sha }} ./backend/accounts-service
-     - name: Login to the Docker Hub
+     - name: Build ${{ matrix.service }} Docker image
+       run: docker build -t thevikashpratapsingh/colleger_${{ matrix.service }}:latest ./backend/${{ matrix.service }}
+     - name: Login to Docker hub of thevikashpratapsingh account
        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-     - name: Push the Accounts Microservice
-       run: docker push thevikashpratapsingh/colleger_accounts_service:${{ github.sha }}  
-     
+     - name: Push image of ${{ matrix.service }} 
+       run: docker push thevikashpratapsingh/colleger_${{ matrix.service }}:latest
