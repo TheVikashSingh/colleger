@@ -8,6 +8,9 @@ A portal to manage students, classes, subjects etc.
 
 
 
+Update 07: Learnt retagging images and pushed the frontend image to my dockerhub - thevikashpratapsingh through the CLI. i learnt that Docker Hub repositories must start with our Docker Hub username. Also Docker Hub doesn’t support nested repositories (slashes after your username). So I created one more image in my local by renaming an existing image colleger-frontend:latest to thevikashpratapsingh/colleger-frontend:v1 . After that I pushed by -> docker push thevikashpratapsingh/colleger-frontend:v1    
+<img width="1476" height="1399" alt="image" src="https://github.com/user-attachments/assets/e59cf7f0-1167-4d13-93f7-080b5f94f06f" />
+
 
 Update 06: Learnt a lot of things in docker-compose.yml. Fixed volume mounting issue in pgsql. Also removed many errors in the compose file. Revised the concepts of docker volumes, docker system prune, docker logs and many more.
 **All 11 containers are running successfully** . 
