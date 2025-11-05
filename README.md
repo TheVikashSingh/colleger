@@ -1,8 +1,18 @@
-# colleger
+<img width="1245" height="751" alt="image" src="https://github.com/user-attachments/assets/aab96b59-3133-4d33-83a3-139ef0e2563c" /># colleger
 A portal to manage students, classes, subjects etc. 
 
 
 
+
+
+
+
+
+
+Update 09: **COMPLETED CONTINUOUS INTEGRATION** . 
+Finally completed the CI part of my colleger-project using github actions. Had to use matrix strategy of github actions to parallely build 5 backend microservices while reducing verbosity. All the 6 microservices are now successfully hosted on docker hub. The working github actions workflow's name is - CI_Pipeline_Matrix_Build.yml
+<img width="1377" height="832" alt="image" src="https://github.com/user-attachments/assets/5b471aa0-65c2-4e2e-a9c5-e785efb1d287" />
+<img width="1245" height="751" alt="image" src="https://github.com/user-attachments/assets/906c4ef2-732c-4a70-8a4f-7c7171e75f7a" />
 
 
 
@@ -23,8 +33,6 @@ Update 06: Learnt a lot of things in docker-compose.yml. Fixed volume mounting i
 This compose file as of now generates 11 containers - 5 microservices + 5 microservices' db + 1 react frontend
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/4f6d4883-6c28-4d75-ab1f-867087b34256" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/8d0d7826-7201-4f07-a751-b7687258fa90" />
-<img width="2248" height="10728" alt="docker-compose yml" src="https://github.com/user-attachments/assets/dd095ec8-8418-4002-865f-3d6a92cb226e" />
-
 
 
 
