@@ -7,8 +7,14 @@ A portal to manage students, classes, subjects etc.
 
 
 
+Update 08: Successfully pushed two images - one accounts microservice and the other react frontend using github actions workflow to DockeHub. Next I am going to fully push images of all 5 microservices and the frontend to dockerhub using github actions.
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/baca63c0-0edf-48ca-89f8-1cb9aeb86f22" />
 
-Update 07: Learnt retagging images and pushed the frontend image to my dockerhub - thevikashpratapsingh through the CLI. i learnt that Docker Hub repositories must start with our Docker Hub username. Also Docker Hub doesn’t support nested repositories (slashes after your username). So I created one more image in my local by renaming an existing image colleger-frontend:latest to thevikashpratapsingh/colleger-frontend:v1 . After that I pushed by -> docker push thevikashpratapsingh/colleger-frontend:v1    
+
+
+
+
+Update 07: Learnt retagging images and pushed the frontend image to my dockerhub - thevikashpratapsingh through the CLI (after logging in through Personal Access Token of Docker). i learnt that Docker Hub repositories must start with our Docker Hub username. Also Docker Hub doesn’t support nested repositories (slashes after your username). So I created one more image in my local by renaming an existing image colleger-frontend:latest to thevikashpratapsingh/colleger-frontend:v1 . After that I pushed by -> docker push thevikashpratapsingh/colleger-frontend:v1    
 <img width="1476" height="1399" alt="image" src="https://github.com/user-attachments/assets/e59cf7f0-1167-4d13-93f7-080b5f94f06f" />
 
 
