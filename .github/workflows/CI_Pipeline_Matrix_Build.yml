@@ -17,11 +17,11 @@ jobs:
         npm ci
         npm run build
      - name: Build frontend Docker image
-       run: docker build -t thevikashpratapsingh/colleger_frontend:latest ./frontend
+       run: docker build -t thevikashpratapsingh/colleger-frontend:latest ./frontend
      - name: Login to the Docker Hub
        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
      - name: Push the frontend image
-       run: docker push thevikashpratapsingh/colleger_frontend:latest 
+       run: docker push thevikashpratapsingh/colleger-frontend:latest 
 
   build_backend_microservices:
    runs-on: ubuntu-latest
@@ -40,8 +40,8 @@ jobs:
        working-directory: ./backend/${{ matrix.service }} 
        run: mvn clean package -DskipTests
      - name: Build ${{ matrix.service }} Docker image
-       run: docker build -t thevikashpratapsingh/colleger_${{ matrix.service }}:latest ./backend/${{ matrix.service }}
+       run: docker build -t thevikashpratapsingh/colleger-${{ matrix.service }}:latest ./backend/${{ matrix.service }}
      - name: Login to Docker hub of thevikashpratapsingh account
        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
      - name: Push image of ${{ matrix.service }} 
-       run: docker push thevikashpratapsingh/colleger_${{ matrix.service }}:latest
+       run: docker push thevikashpratapsingh/colleger-${{ matrix.service }}:latest
