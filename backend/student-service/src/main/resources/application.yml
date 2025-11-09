@@ -8,7 +8,7 @@ spring:
     name: colleger_student_microservice
 
   profiles:
-    active: local
+    active: docker
 
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/colleger_studentdb}
