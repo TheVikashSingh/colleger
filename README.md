@@ -4,6 +4,12 @@ A portal to manage students, classes, subjects etc.
 
 
 
+
+Update 11: Added Prometheus and Grafana for proper observability of pods.
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/666d3a33-6330-4b9a-9f11-8e908c66c25f" />
+
+
+
 Update 10: **COMPLETED CONTINUOUS DEPLOYMENT** .
 Finally Completed the CD part of this project. I used kubernetes inside a minikube cluster to deploy my pods which use images from dockerhub. In this way my CICD pipeline is complete. Encountered so many issues and learnt a lot. Some of the Issues faced and their resolving techniques are:-
 1. PersistentVolumeClaim - resolved by adding a proper pvc yaml.
