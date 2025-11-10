@@ -1,7 +1,20 @@
-<img width="1245" height="751" alt="image" src="https://github.com/user-attachments/assets/aab96b59-3133-4d33-83a3-139ef0e2563c" /># colleger
+colleger
 A portal to manage students, classes, subjects etc. 
 
 
+
+
+Update 10: **COMPLETED CONTINUOUS DEPLOYMENT** .
+Finally Completed the CD part of this project. I used kubernetes inside a minikube cluster to deploy my pods which use images from dockerhub. In this way my CICD pipeline is complete. Encountered so many issues and learnt a lot. Some of the Issues faced and their resolving techniques are:-
+1. PersistentVolumeClaim - resolved by adding a proper pvc yaml.
+2. Cors Issue - This was a major issue costing me so much time. Finally used kubectl logs to pinpoint the allowedOrigins and allowCredentials issue in Corsconfig class. The logs didn't quickly generate that caused a major setback. But resolved it anyway.
+3. Kubernetes YAML and Spring Boot Yaml mismatch - Fixed it by using correct profile and db properties.
+4. @RequestMapping error - In local http://xyz.a and http://xyx.a/ are same but not in a kubernetes cluster.
+5. Underscores in image names and yaml names must be completely avoided. You must used hyphens in it's place.
+   
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6014d90f-6ee3-447c-81e0-268c4c14457a" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5bc4f538-2cae-4851-9d86-58312c7dc3fb" />
 
 
 
