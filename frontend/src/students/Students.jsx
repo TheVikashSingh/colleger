@@ -14,16 +14,16 @@ const Students = () => {
     const queryClient = useQueryClient();
 
     const getStudentDetails = async () => {
-        const response = await axios.get(studentApiURL);
+        const response = await axios.get(`${studentApiURL}`);
         return response.data;
     }
 
     const addAStudentFunction = async (new_student) => {
-    const response = await axios.post("http://localhost:8084/api/students/",new_student);
+    const response = await axios.post(`${studentApiURL}`,new_student);
     }
 
     const deleteStudentFunction = async (id) => {
-        const response = await axios.delete(`http://localhost:8084/api/students/${id}`);
+        const response = await axios.delete(`${studentApiURL}${id}`);
     }
 
     const {data, isLoading, isError, error} = useQuery({
