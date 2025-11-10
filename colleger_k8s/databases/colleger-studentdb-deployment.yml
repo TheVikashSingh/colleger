@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colleger-studentdb-deployment
+spec:
+  selector:
+    matchLabels:
+      app: colleger-studentdb
+  template:
+    metadata:
+      labels:
+        app: colleger-studentdb
+    spec:
+      containers:
+      - name: colleger-studentdb
+        image: postgres:18
+        resources:
+          requests: 
+            memory: "128Mi"
+            cpu: "250m"  
+          limits:
+            memory: "256Mi"
+            cpu: "400m"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "12345"
+          - name: POSTGRES_DB
+            value: colleger-studentdb
+        volumeMounts: 
+          - name: colleger-studentdb
+            mountPath: /var/lib/postgresql
+      volumes:
+       - name: colleger-studentdb
+         persistentVolumeClaim:
+           claimName: colleger-studentdb-pvc
+

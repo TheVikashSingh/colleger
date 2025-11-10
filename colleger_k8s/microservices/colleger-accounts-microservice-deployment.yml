@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colleger-accounts-microservice-deployment
+spec:
+  selector:
+    matchLabels:
+      app: colleger-accounts-microservice
+  template:
+    metadata:
+      labels:
+        app: colleger-accounts-microservice
+    spec:
+      containers:
+      - name: colleger-accounts-microservice
+        image: thevikashpratapsingh/colleger-accounts-service:latest
+        imagePullPolicy: Always
+        resources:
+          requests: 
+            memory: "128Mi"
+            cpu: "250m"  
+          limits:
+            memory: "256Mi"
+            cpu: "400m"
+        ports:
+        - containerPort: 8081
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://colleger-accountsdb-service:5432/colleger-accountsdb
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "postgres"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "12345"
+          - name: SPRING_PROFILE_ACTIVE
+            value: docker  
+        

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colleger-student-microservice-deployment
+spec:
+  selector:
+    matchLabels:
+      app: colleger-student-microservice
+  template:
+    metadata:
+      labels:
+        app: colleger-student-microservice
+    spec:
+      containers:
+      - name: colleger-student-microservice
+        image: thevikashpratapsingh/colleger-student-service:latest
+        imagePullPolicy: Always
+        resources:
+          requests: 
+            memory: "2048Mi"
+            cpu: "250m"  
+          limits:
+            memory: "4096Mi"
+            cpu: "400m"
+        ports:
+        - containerPort: 8084
+        env:
+          - name: DB_URL
+            value: jdbc:postgresql://colleger-studentdb-service:5432/colleger-studentdb
+          - name: DB_USERNAME
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: "12345"
+        
+

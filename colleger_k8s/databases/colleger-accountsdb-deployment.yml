@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colleger-accountsdb-deployment
+spec:
+  selector:
+    matchLabels:
+      app: colleger-accountsdb-deployment
+  template:
+    metadata:
+      labels:
+        app: colleger-accountsdb-deployment
+    spec:
+      containers:
+      - name: colleger-accountsdb
+        image: postgres:18
+        resources:
+          requests: 
+            memory: "128Mi"
+            cpu: "250m"  
+          limits:
+            memory: "256Mi"
+            cpu: "400m"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "12345"
+          - name: POSTGRES_DB
+            value: colleger-accountsdb
+        volumeMounts: 
+          - name: colleger-accountsdb
+            mountPath: /var/lib/postgresql
+      volumes:
+       - name: colleger-accountsdb
+         persistentVolumeClaim:
+          claimName: colleger-accountsdb-pvc  
+
